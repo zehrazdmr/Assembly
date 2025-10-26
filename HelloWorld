@@ -1,0 +1,16 @@
+.org 16
+
+start		ldx #msg ; X register'ını 'msg' etiketinin adresine ayarla
+printloop	ldab 0,x ; X register'ındaki adresten bir byte oku ve B register'ına yükle
+    		cmpb #0 ; B register'ındaki değeri kontrol et (null karakter)
+    		beq endprint ; Eğer null karakterse yazdırma işlemi bitmiştir
+    		jsr putchar ; putchar alt programını çağırarak karakteri ekrana yazdır
+    		inx ; X register'ını bir sonraki adrese taşı
+    		bra printloop ; Yazdırma döngüsünü tekrarla
+
+endprint	bra $ ; Programı sonlandır
+
+putchar		stab $F001 ; A register'ındaki değeri terminal çıkışına (monitor) yaz
+    		rts ; putchar işlevini bitir
+
+msg			.byte 'Hello, World!' ; Yazılacak mesajı tanımla ve null karakterle sonlandır
