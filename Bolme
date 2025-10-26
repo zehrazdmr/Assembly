@@ -1,0 +1,15 @@
+.org $0000
+		
+start 	ldaa #$48
+		staa $0040
+		ldaa #$15
+		staa $0050
+		ldx #0
+bolme	ldaa $0040
+		suba $0050
+		bcs stop
+		inx
+		staa $0040
+		jmp bolme
+stop 	stx $0060
+	.end
