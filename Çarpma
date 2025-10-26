@@ -1,0 +1,22 @@
+.org 0
+start ldaa #3
+      ldab #1
+loop  cmpb #3
+	  beq stop
+      incb
+	  adda #3
+	  jmp loop
+stop .end
+
+
+
+    .org $0000
+start ldaa #4
+      ldab #1
+loop  cmpb #5
+	  beq stop
+      incb
+	  adda #4
+	  jmp loop
+stop 	staa $0080
+       .end
