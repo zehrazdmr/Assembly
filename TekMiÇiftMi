@@ -1,0 +1,5 @@
+	.org $0000
+	ldaa #8
+	anda #$01
+	staa $20
+	.end 
