@@ -1,0 +1,9 @@
+	.org $0000
+	ldaa #0
+	ldab #1
+loop 	aba
+	 incb 
+	 cmpb #10
+	 bne loop
+son staa $40
+	.end
