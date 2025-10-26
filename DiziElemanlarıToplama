@@ -1,0 +1,12 @@
+	.org 0000
+	.byte 4,2,7,8,11,15
+	ldx #$00
+	ldaa $00,x
+loop inx
+	 adda $00,x
+	 tab 
+	 cpx #5
+	 bne loop
+	 stab $40
+	.end
+	
